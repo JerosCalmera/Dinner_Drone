@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+.nav {
+    background-color: rgb(152, 222, 153);
+    color: rgb(0, 94, 0);
+    padding: 2.5%;
+}
+
+h1 {
+    text-align: center;
+}
+
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:lightcyan
+}
+
+.base {    
+    color:darkblue;
+    background-color:lightcyan;
+    padding: 1.5%;
+    margin: 0%;
+}

@@ -17,10 +17,12 @@ from models import Customer, OrderHistory, OrderItem, Menu
 from controllers.dinner_drone_controller import dinner_drone_blueprint
 from controllers.menu_controller import menu_blueprint
 from controllers.customer_controller import customer_blueprint
+from controllers.order_controller import order_blueprint
 
 app.register_blueprint(dinner_drone_blueprint)
 app.register_blueprint(menu_blueprint)
 app.register_blueprint(customer_blueprint)
+app.register_blueprint(order_blueprint)
 
 from seed import seed
 app.cli.add_command(seed)

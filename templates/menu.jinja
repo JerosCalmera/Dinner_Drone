@@ -1,0 +1,23 @@
+{% extends 'base.jinja' %}
+{% block content %}
+<h2>{{ title }}</h2>
+<div class="remove">
+<h2>{{ title_2 }}</h2>
+</div>
+<br>
+<a href="/menu_add_item">Add a new menu item</a>
+<br>
+{% for menu in menu %}
+            <br>
+            <ol>
+            <b>Name:</b> {{ menu.item_name }}<br>
+            <b>Type of item:</b> {{ menu.item_type }}<br>
+            <b>Item price:</b> £{{ menu.item_price }}<br>
+            </ol>
+            <b>Remove Item <a href="/menu_item_delete/{{menu.id}}/delete">Remove</a></b> 
+            <br>
+            <br>
+{% endfor %}
+
+{% endblock %}
+

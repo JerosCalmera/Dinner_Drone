@@ -1,0 +1,22 @@
+{% extends 'base.jinja' %}
+{% block content %}
+<h2>{{ title }}</h2>
+<div class="remove">
+<h2>{{ title_2 }}</h2>
+</div>
+<br>
+<a href="/customer_add_entry">Add a new customer</a>
+<br>
+{% for customer in customers %}
+            <br>
+            <ol>
+            <b>Customer Name:</b> {{ customer.name }}<br>
+            <b>Customer Address:</b> {{ customer.address}}<br>
+            </ol>
+            <b>Remove Customer <a href="/customer_delete_entry/{{customer.id}}/delete">Remove</a></b> 
+            <br>
+            <br>
+{% endfor %}
+
+{% endblock %}
+

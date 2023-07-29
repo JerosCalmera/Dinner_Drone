@@ -14,9 +14,13 @@ migrate = Migrate(app, db)
 # Import and Register Controllers
 from models import Customer, OrderHistory, OrderItem, Menu
 
-@app.route("/")
-def home():
-    return render_template("index.jinja", title="Hello World")
+from controllers.dinner_drone_controller import dinner_drone_blueprint
+from controllers.menu_controller import menu_blueprint
+from controllers.customer_controller import customer_blueprint
+
+app.register_blueprint(dinner_drone_blueprint)
+app.register_blueprint(menu_blueprint)
+app.register_blueprint(customer_blueprint)
 
 from seed import seed
 app.cli.add_command(seed)

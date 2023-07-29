@@ -34,4 +34,4 @@ class Menu(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     item_name = db.Column(db.String(64))
     item_type = db.Column(db.String(64))
-    item_price = db.Column(db.Integer)
+    item_price = db.Column(db.Numeric(precision=3, scale=2), nullable=False)

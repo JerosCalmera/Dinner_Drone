@@ -1,0 +1,25 @@
+{% extends 'base.jinja' %}
+{% block content %}
+<h2>{{ title }}</h2>
+<div>
+<form action="/menu_add" method="post">
+
+<label for="item_name">Item name:</label>
+<input type="text" id="item_name" required name="item_name"> 
+
+<label for="item_type">Item type:</label>
+<select name="item_type" id="item_type" required name="item_type"> 
+        <option value="Starter">Starter</option>
+        <option value="Main">Main</option>
+        <option value="Dessert">Dessert</option>
+        <option value="Drink">Drink</option>
+        </select>
+
+<label for="item_price">Item price: £</label>
+<input type="text" style="width: 45px;" id="item_price" required name="item_price"> 
+
+<button type="submit">Add Item</button>
+</form>
+</div>
+
+{% endblock %}

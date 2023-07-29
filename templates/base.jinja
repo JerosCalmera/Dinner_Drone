@@ -3,16 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
+    <title>Dinner Drone</title>
+    <link rel="stylesheet" href="/static/style.css">
   </head>
-  <body></body>
+  <div class="nav_bar">
+  <h1>Dinner Drone Internal Order System</h1>
+  <br>
+  <nav> 
+    <a href="/order">Orders</a>
+    <a href="/customer">Customers</a>
+    <a href="/menu">Menu Items</a>
+  </nav>
+  </div>
+  <body>
+  </body>
 </html>
+    {% block content %}
+
+    {% endblock %}

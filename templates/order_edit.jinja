@@ -1,0 +1,32 @@
+{% extends 'base.jinja' %}
+{% block content %}
+<h2>{{ title }}</h2>
+<div>
+<form action="/order_edit_submit" method="post">
+
+<label for="customer_id">Edit eustomer name</label>
+<input type= "text" required name="customer_id" default="{{ order_history.customer.name }}" id="customer_id"> 
+
+
+<label for="customer_phone">Customer phone number:</label>
+<input type="text" required name="customer_phone" default:="{{ order_history.customer.phone }}" id="customer_phone"> 
+
+
+<label for="customer_address">Customer phone number:</label>
+<input type="text" required name="customer_address" default:="{{ order_history.customer.address }}" id="customer_address"> 
+
+
+
+<label for="order_date">Date of order:</label>
+<input type="date" required name="order_date" default:="{{ order_history.order_date }}" id="order_date">
+
+
+<label for="menu_item">Menu Item to change</label>
+<select name="menu_item" id="menu_item"> 
+<option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
+
+</select>
+<button type="submit">Save</button>
+</form>
+</div>
+{% endblock %}

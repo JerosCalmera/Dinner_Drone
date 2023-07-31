@@ -4,7 +4,8 @@
 <div class="remove">
 <h2>{{ title_2 }}</h2>
 </div>
-<a href="/order_add_form">Add a new order</a>
+<div class="button-outer">
+<a class="button-small" href="/order_add_form">Add a new order</a>
 <br>
 {% for order_history in order_histories %}
             <br>
@@ -17,9 +18,9 @@
             {% for order_item in order_history.order_items %}
             <b>Order Items:</b> {{ order_item.menu.item_name }}<br>
             {% endfor %}
+            <b>Delete Order:<a class="button-small-delete" href="/order_delete_entry/{{order_history.id}}/delete">Delete</a></b> 
             </ol>
-            <b>Delete Order <a href="/order_delete_entry/{{order_history.id}}/delete">Delete</a></b> 
             <br>
 {% endfor %}
-
+</div>
 {% endblock %}

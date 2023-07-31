@@ -43,6 +43,11 @@ def order_delete(id):
     order_history = OrderHistory.query.all()
     return render_template("/orders.jinja", title="Order History", title_2="Order Deleted!", order_histories = order_history)
 
+# @order_blueprint.route("/order_edit/<id>/edit")
+# def order_edit(id):
+#     order_history == OrderHistory.query.all()
+#     return render_template("/order_edit.jinja", title="Edit Order", order_histories = order_history)
+
 # @order_blueprint.route("/order_add_sumbit", methods=["POST"])
 # def order_form():
 #     customer_name = request.form ["customer_name"]

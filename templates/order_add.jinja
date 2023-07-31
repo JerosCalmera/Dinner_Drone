@@ -1,7 +1,7 @@
 {% extends 'base.jinja' %}
 {% block content %}
 <h2>{{ title }}</h2>
-<div>
+<div class="button-outer">
 <form action="/order_add" method="post">
 
 <label for="customer_id">Customer</label>
@@ -26,7 +26,7 @@
 <br>
 
 
-<button type="submit">Add Order</button>
+<button class="button-small" type="submit">Add Order</button>
 </form>
 </div>
 {% endblock %}

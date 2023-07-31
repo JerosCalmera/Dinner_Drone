@@ -1,25 +1,112 @@
 * {
     margin: 0;
-    padding: 0;
+    padding: 0px;
 }
+
+.backround-outer {
+    overflow: hidden;
+    position: relative;
+}
+
+.backround-image {
+    opacity: 0.5;
+    position: fixed;
+    width: 100%;
+    height: auto;
+}
+
+.backround-display {
+    position: relative;
+}
+
 
 h2 {
     text-align: center;
+    color: #003089;
 }
 
 .remove {
     color: red;
 }
 
-
 .nav_bar {
     text-align: center;
-    padding: 0.5%;
+    color: #003089;
+    padding: 25px;
+    padding-top: 5px;
+    border-bottom: 4px solid #0243bc;
 }
 
 html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color:lightcyan;
-    color: black
+    color: black;
+    text-shadow:white;
 }
 
+.button {
+    background-color:white ;
+    color: #0243bc;
+    border-radius: 18px;
+    padding: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    border-color:  #0243bc;
+    border-style: solid;
+    margin: 4px;
+}
+
+.button:hover {
+    color: white;
+    background-color: #0243bc;
+    transition: 0.2s;
+}
+
+.button-small {
+    background-color:white;
+    color: #0243bc;
+    border-radius: 18px;
+    padding: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    border-color: #0243bc;
+    border-style: solid;
+}
+
+.button-small:hover {
+    color: white;
+    background-color: #0243bc;
+    transition: 0.2s;
+}
+
+.button-small-delete {
+    background-color:white;
+    color: red;
+    border-radius: 18px;
+    padding: 2.8px;
+    font-weight: bold;
+    text-decoration: none;
+    border-color: #0243bc;
+    border-style: solid;
+}
+
+.button-small-delete:hover {
+    color: white;
+    background-color: red;
+    transition: 0.2s;
+    border-color: red;
+}
+
+.button-outer{
+    line-height: 1.6;
+    padding-inline: 5px;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #0243bc;
+    color: white;
+    text-weight:bold;
+    text-align: center;
+}

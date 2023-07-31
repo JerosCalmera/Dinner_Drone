@@ -11,8 +11,9 @@ class Customer(db.Model):
     __tablename__ = "customer"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
+    phone = db.Column(db.String(64))
     address = db.Column(db.String(64))
-    order_history = db.relationship('OrderHistory', backref='Customer')
+    order_history = db.relationship('OrderHistory', backref='customer')
 
     def __repr__(self):
         return f"<Customer: {self.id}: {self.name}: {self.address}>"
@@ -22,6 +23,8 @@ class OrderHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey("customer.id"))
     order_date = db.Column(db.DateTime,default = datetime.utcnow)
+    order_items = db.relationship('OrderItem', backref="order_history")
+
 
 class OrderItem(db.Model):
     __tablename__ = "order_item"
@@ -35,3 +38,4 @@ class Menu(db.Model):
     item_name = db.Column(db.String(64))
     item_type = db.Column(db.String(64))
     item_price = db.Column(db.Numeric(precision=3, scale=2), nullable=False)
+    order_items = db.relationship('OrderItem', backref="menu")

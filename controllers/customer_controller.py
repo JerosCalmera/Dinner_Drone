@@ -17,9 +17,10 @@ def redirect_c():
 def customer_add():
 
     customer_name = request.form ["customer_name"]
+    customer_phone = request.form ["customer_phone"]
     customer_address = request.form ["customer_address"]
 
-    customer = Customer(name = customer_name, address = customer_address)
+    customer = Customer(name = customer_name, phone = customer_phone, address = customer_address)
 
     db.session.add(customer)
     db.session.commit()

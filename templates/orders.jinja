@@ -1,0 +1,24 @@
+{% extends 'base.jinja' %}
+{% block content %}
+<h2>{{ title }}</h2>
+<a href="/order_add_form">Add a new order</a>
+<br>
+{% for customer in customer%}
+            <br>
+            <ol>
+            <b>Customer Name:</b> {{ order_history.customer.name }}<br>
+            <b>Customer Phone Number:</b> {{ order_history.customer.phone}}<br>          
+            <b>Customer Address:</b> {{ order_history.customer.address}}<br>
+            {% endfor %}
+                        {% for order in orders %}
+                        <b>Order Id:</b> {{ order_history.order_history.id}}<br>
+                        <b>Order Date:</b> {{ order_history.order_history.order_date}}<br>
+                        {% endfor %}
+                                    {% for item in menu %}   
+                                    <b>Order Items:</b> {{ order_history.menu }}<br>
+                                    {% endfor %}
+            <br>
+            </ol>
+
+
+{% endblock %}

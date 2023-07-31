@@ -29,6 +29,8 @@ def customer_add():
 
 @customer_blueprint.route("/customer_delete_entry/<id>/delete")
 def customer_delete(id):
+    db.session.query(OrderItem).filter(OrderItem.order_history_id==OrderHistory.id).delete()
+    db.session.query(OrderHistory).filter(OrderHistory.customer_id==id).delete()
     db.session.query(Customer).filter(Customer.id==id).delete()
     db.session.commit()
     customers = Customer.query.all()

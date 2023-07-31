@@ -29,6 +29,7 @@ def menu_add():
 
 @menu_blueprint.route("/menu_item_delete/<id>/delete")
 def menu_delete(id):
+    db.session.query(OrderItem).filter(OrderItem.menu_items_id==id).delete()
     db.session.query(Menu).filter(Menu.id==id).delete()
     db.session.commit()
     menu = Menu.query.all()

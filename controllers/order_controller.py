@@ -8,7 +8,7 @@ order_blueprint = Blueprint("order", __name__)
 @order_blueprint.route("/orders")
 def order_page():
     order_history = OrderHistory.query.all()
-    return render_template("/orders.jinja", title="Order History", order_history = order_history)
+    return render_template("/orders.jinja", title="Order History", order_histories = order_history)
 
 
 @order_blueprint.route("/order_add_form")
@@ -32,8 +32,16 @@ def order_form_s():
 
     db.session.add(order)
     db.session.commit()
+    order_history = OrderHistory.query.all()
+    return render_template("/orders.jinja", title="Order History!", title_2="Order Added!", order_histories = order_history)
 
-    return render_template("/order_add.jinja", title="Order Added!")
+@order_blueprint.route("/order_delete_entry/<id>/delete")
+def order_delete(id):
+    db.session.query(OrderItem).filter(OrderItem.order_history_id==id).delete()
+    db.session.query(OrderHistory).filter(OrderHistory.id==id).delete()
+    db.session.commit()
+    order_history = OrderHistory.query.all()
+    return render_template("/orders.jinja", title="Order History", title_2="Order Deleted!", order_histories = order_history)
 
 # @order_blueprint.route("/order_add_sumbit", methods=["POST"])
 # def order_form():

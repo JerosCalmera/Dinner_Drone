@@ -22,14 +22,11 @@
 <input type="date" required name="order_date" default:="{{ order.order_date }}" id="order_date">
 <br>
 <ol>
-{% for order_item in order.order_items %}
-<b>Item ordered:</b> {{ order_item.menu.item_name }} <b>Edit:</b>
-{% endfor %}
-<select name="menu_item" id="menu_item"> 
-{% for item in items %}
-<option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
-{% endfor %}
-</select>
+    {% for item in items %}
+    <br>
+    <input type="checkbox", id="item_{{ item.id }}", name="item_{{ item.id }}", value="item_{{ item.id }}">
+    </b><label for="item_{{ item.id }}"><b>{{ item.item_type }}</b> {{ item.item_name }} £{{ item.item_price }}</label>
+    {% endfor %}
 <br>
 <b><button class="button-small" type="submit">Save Changes</button></b>
 </form>

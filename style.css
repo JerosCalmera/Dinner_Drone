@@ -3,102 +3,75 @@
     padding: 0px;
 }
 
-.list-outer {
-    display: flex;
-    flex-flow: wrap;
+.backround {
+    background-image: url(/img/droneback.jpg);
 }
 
-.list-inner {
-    flex-basis: 25%;
-    padding: 1%;
-    line-height: 1.7;
-}  
-
-.backround-outer {
-    overflow: hidden;
-    position: relative;
-}
-
-.backround-image {
-    opacity: 0.4;
-    position: fixed;
-    width: 100%;
-    height: auto;
-}
-
-.backround-display {
-    position: relative;
-}
 
 h2 {
     text-align: center;
 }
 
-.page_title{
-    color: #003aa6
-}
-
-.alert {
+.remove {
     color: red;
 }
 
+
 .nav_bar {
     text-align: center;
-    color: #003aa6;
-    padding: 25px;
-    padding-top: 5px;
-    border-bottom: 4px solid #003aa6;
+    padding: 1%;
+    color: #0243bc;
 }
 
 html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: black;
-    text-shadow:white;
+    background-color:lightcyan;
+    color: black
 }
 
 .button {
-    background-color:rgb(222, 232, 253);
-    color: #003aa6;
+    background-color:#ffffff;
+    color: #0243bc;
     border-radius: 18px;
     padding: 15px;
     font-weight: bold;
     text-decoration: none;
-    border-color:  #003aa6;
+    border-color:  #0243bc;
     border-style: solid;
     margin: 4px;
 }
 
 .button:hover {
     color: white;
-    background-color: #003aa6;
+    background-color: #0243bc;
     transition: 0.2s;
 }
 
 .button-small {
-    background-color:rgb(222, 232, 253);
-    color: #003aa6;
-    border-radius: 9px;
-    padding: 2px;
+    background-color:white;
+    color: #0243bc;
+    border-radius: 18px;
+    padding: 5px;
     font-weight: bold;
     text-decoration: none;
-    border-color: #003aa6;
+    border-color: #0243bc;
     border-style: solid;
 }
 
 .button-small:hover {
     color: white;
-    background-color: #003aa6;
+    background-color: #0243bc;
     transition: 0.2s;
 }
 
 .button-small-delete {
     background-color:white;
     color: red;
-    border-radius: 9px;
-    padding: 2px;
+    border-radius: 18px;
+    padding: 2.8px;
     font-weight: bold;
     text-decoration: none;
-    border-color: #003aa6;
+    border-color: #0243bc;
     border-style: solid;
 }
 
@@ -110,7 +83,7 @@ html {
 }
 
 .button-outer{
-    line-height: 1.7;
+    line-height: 1.6;
     padding-inline: 5px;
 }
 
@@ -118,7 +91,7 @@ footer{
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #003aa6;
+    background-color: #0243bc;
     color: white;
     text-weight:bold;
     text-align: center;

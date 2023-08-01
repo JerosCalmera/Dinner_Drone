@@ -1,0 +1,24 @@
+{% extends 'base.jinja' %}
+{% block content %}
+<h2 class="page_title">{{ title }}</h2>
+<h2 class="alert">{{ title_2 }}</h2>
+<div class="button-outer">
+<a class="button-small" href="/order_add_form">Add a new order</a>
+<br>
+</div>
+<div class="list-outer">
+{% for order_history in order_histories %}
+            <br>
+            <ol class="list-inner">
+            <b>Customer Name:</b> {{ order_history.customer.name }}<br>
+            <b>Order Id:</b> {{ order_history.id}}<br>
+            <b>Order Date:</b> {{ order_history.order_date}}<br>
+            <b>View further details and edit:<a class="button-small" href="/order_entry/{{order_history.id}}">View</a></b> 
+            <br>
+            <b>Delete Order:<a class="button-small-delete" href="/order_delete_entry/{{order_history.id}}/delete">Delete</a></b>
+            </ol>
+            <br>
+{% endfor %}
+</div>
+</div>
+{% endblock %}

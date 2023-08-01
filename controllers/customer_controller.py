@@ -1,17 +1,17 @@
 from flask import render_template, redirect, Blueprint, request
 from app import db
-from models import Customer, OrderHistory, OrderItem, Menu
+from models import Customers, OrdersHistory, OrderItems, Menu
 
 customer_blueprint = Blueprint("customer", __name__)
 
 @customer_blueprint.route("/customer")
 def customer_page():
-    customers = Customer.query.all()
-    return render_template("/customers.jinja", title="Customer Information", customers=customers)
+    customers = Customers.query.all()
+    return render_template("/customer/customers.jinja", title="Customer Information", customers=customers)
 
 @customer_blueprint.route("/customer_add_entry")
 def redirect_c():
-    return render_template("/customer_add.jinja", title="Add A Customer item")
+    return render_template("/customer/customer_add.jinja", title="Add A Customer")
 
 @customer_blueprint.route("/customer_add", methods=["POST"])
 def customer_add():
@@ -20,20 +20,20 @@ def customer_add():
     customer_phone = request.form ["customer_phone"]
     customer_address = request.form ["customer_address"]
 
-    customer = Customer(name = customer_name, phone = customer_phone, address = customer_address)
+    customer = Customers(name = customer_name, phone = customer_phone, address = customer_address)
 
     db.session.add(customer)
     db.session.commit()
-    customers = Customer.query.all()
-    return render_template("/customers.jinja", title="Customer Details", title_2="Customer Details Added!", customers=customers)
+    customers = Customers.query.all()
+    return render_template("/customer/customers.jinja", title="Customer Details", title_2="Customer Details Added!", customers=customers)
 
 @customer_blueprint.route("/customer_delete_entry/<id>/delete")
 def customer_delete(id):
-    db.session.query(OrderItem).filter(OrderItem.order_history_id==OrderHistory.id).delete()
-    db.session.query(OrderHistory).filter(OrderHistory.customer_id==id).delete()
-    db.session.query(Customer).filter(Customer.id==id).delete()
+    db.session.query(OrderItems).filter(OrderItems.order_history_id==OrderHistory.id).delete()
+    db.session.query(OrdersHistory).filter(OrdersHistory.customer_id==id).delete()
+    db.session.query(Customers).filter(Customers.id==id).delete()
     db.session.commit()
-    customers = Customer.query.all()
-    return render_template("/customers.jinja", title="Customer Information", title_2="Customer Details Removed!", customers=customers)
+    customers = Customers.query.all()
+    return render_template("/customer/customers.jinja", title="Customer Information", title_2="Customer Details Removed!", customers=customers)
 
 

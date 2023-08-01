@@ -1,0 +1,92 @@
+<b>2: </b><label for="menu_item_2">Menu Item to add</label>
+<select name="menu_item_2" id="menu_item_2"> 
+{% for item in items %}
+    <option value="blank">Select item</option>
+    <option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
+{% endfor %}
+</select>
+<br>
+<b>3: </b><label for="menu_item_3">Menu Item to add</label>
+<select name="menu_item_3" id="menu_item_3"> 
+{% for item in items %}
+    <option value="blank">Select item</option>
+    <option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
+{% endfor %}
+</select>
+<br>
+<b>4: </b><label for="menu_item_4">Menu Item to add</label>
+<select name="menu_item_4" id="menu_item_1"> 
+{% for item in items %}
+    <option value="blank">Select item</option>
+    <option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
+{% endfor %}
+</select>
+<br>
+<br>
+<h3>Five to eight items requires a medium drone, delivery cost to the customer is +£12.00</h3>
+<b>5: </b><label for="menu_item_5">Menu Item to add</label>
+<select name="menu_item_5" id="menu_item_5"> 
+{% for item in items %}
+    <option value="blank">Select item</option>
+    <option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
+{% endfor %}
+</select>
+<br>
+<b>6: </b><label for="menu_item_6">Menu Item to add</label>
+<select name="menu_item_6" id="menu_item_6"> 
+{% for item in items %}
+    <option value="blank">Select item</option>
+    <option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
+{% endfor %}
+</select>
+<br>
+<b>7: </b><label for="menu_item_7">Menu Item to add</label>
+<select name="menu_item_7" id="menu_item_7"> 
+{% for item in items %}
+    <option value="blank">Select item</option>
+    <option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
+{% endfor %}
+</select>
+<br>
+<b>8: </b><label for="menu_item_8">Menu Item to add</label>
+<select name="menu_item_8" id="menu_item_8"> 
+{% for item in items %}
+    <option value="blank">Select item</option>
+    <option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
+{% endfor %}
+</select>
+<br>
+<br>
+<h3>Nine to twelve items requires a heavy drone, delivery cost to the customer is +£25.00, please contact your supervisor</h3>
+<b>9: </b><label for="menu_item_9">Menu Item to add</label>
+<select name="menu_item_9" id="menu_item_9"> 
+{% for item in items %}
+    <option value="blank">Select item</option>
+    <option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
+{% endfor %}
+</select>
+<br>
+<b>10: </b><label for="menu_item_10">Menu Item to add</label>
+<select name="menu_item_10" id="menu_item_10"> 
+{% for item in items %}
+    <option value="blank">Select item</option>
+    <option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
+{% endfor %}
+</select>
+<br>
+<b>11: </b><label for="menu_item_11">Menu Item to add</label>
+<select name="menu_item_11" id="menu_item_11"> 
+{% for item in items %}
+    <option value="blank">Select item</option>
+    <option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
+{% endfor %}
+</select>
+<br>
+<b>12: </b><label for="menu_item_12">Menu Item to add</label>
+<select name="menu_item_12" id="menu_item_12"> 
+{% for item in items %}
+    <option value="blank">Select item</option>
+    <option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
+{% endfor %}
+</select>
+<br>

@@ -12,7 +12,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 # Import and Register Controllers
-from models import Customer, OrderHistory, OrderItem, Menu
+from models import Customers, OrdersHistory, OrderItems, Menu
 
 from controllers.dinner_drone_controller import dinner_drone_blueprint
 from controllers.menu_controller import menu_blueprint

@@ -1,6 +1,6 @@
 from flask import render_template, redirect, Blueprint, request
 from app import db
-from models import Customer, OrderHistory, OrderItem, Menu
+from models import Customers, OrdersHistory, OrderItems, Menu
 
 dinner_drone_blueprint = Blueprint("dinner", __name__)
 

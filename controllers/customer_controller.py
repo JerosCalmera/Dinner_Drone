@@ -27,6 +27,25 @@ def customer_add():
     customers = Customers.query.all()
     return render_template("/customer/customers.jinja", title="Customer Details", title_2="Customer Details Added!", customers=customers)
 
+@customer_blueprint.route("/customer_edit_entry/<id>")
+def customer_edit(id):
+    customers = Customers.query.get(id)
+    return render_template("/customer/customer_edit.jinja", title="Customer Details", customers=customers)
+
+@customer_blueprint.route("/customer_edit_entry/<id>/submit", methods=["POST"])
+def customer_edit_submit(id):
+
+    customer = Customers.query.get(id)
+
+    customer.name = request.form ["customer_name"]
+    customer.phone = request.form ["customer_phone"]
+    customer.address = request.form ["customer_address"]
+
+    db.session.commit()
+
+    customers = Customers.query.all()
+    return render_template("/customer/customers.jinja", title="Customer Details", title_2="Customer Details Updated!", customers=customers)
+
 @customer_blueprint.route("/customer_delete_entry/<id>/delete")
 def customer_delete(id):
     db.session.query(OrderItems).filter(OrderItems.order_history_id==OrderHistory.id).delete()

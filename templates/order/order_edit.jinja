@@ -2,31 +2,38 @@
 {% block content %}
 <h2 class="page_title">{{ title }}</h2>
 <div>
-<form action="/order_edit_submit" method="post">
-
-<label for="customer_id">Edit eustomer name</label>
-<input type= "text" required name="customer_id" default="{{ order_history.customer.name }}" id="customer_id"> 
-
-
-<label for="customer_phone">Customer phone number:</label>
-<input type="text" required name="customer_phone" default:="{{ order_history.customer.phone }}" id="customer_phone"> 
-
-
-<label for="customer_address">Customer phone number:</label>
-<input type="text" required name="customer_address" default:="{{ order_history.customer.address }}" id="customer_address"> 
-
-
-
-<label for="order_date">Date of order:</label>
-<input type="date" required name="order_date" default:="{{ order_history.order_date }}" id="order_date">
-
-
-<label for="menu_item">Menu Item to change</label>
+<h2 class="alert">{{ title_2 }}</h2>
+<form action="/order_edit_entry/{{order.id}}/submit" method="post">
+<div class="button-outer">
+<br>
+<br>
+<label for="customer_id"><b>Customer name</b></label>
+<input type= "text" disabled required name="customer_id" value="{{ order.customer.name }}" id="customer_id"> 
+<br>    
+<label for="customer_phone"><b>Customer phone number:</b></label>
+<input type= "text" disabled required name="customer_phone" value="{{ order.customer.phone }}" id="customer_phone"> 
+<br>
+<label for="customer_address"><b>Customer address:</b></label>
+<input type= "text" size="45" disabled required name="customer_address" value="{{ order.customer.address }}" id="customer_address"> 
+<br>
+<b>Order Id (locked): </b>{{ order.id}}
+<br>
+<label for="order_date"><b>Edit date of order:</b></label> ({{ order.order_date}})
+<input type="date" required name="order_date" default:="{{ order.order_date }}" id="order_date">
+<br>
+<ol>
+{% for order_item in order.order_items %}
+<b>Item ordered:</b> {{ order_item.menu.item_name }} <b>Edit:</b>
+{% endfor %}
 <select name="menu_item" id="menu_item"> 
+{% for item in items %}
 <option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
-
+{% endfor %}
 </select>
-<button type="submit">Save</button>
+<br>
+<b><button class="button-small" type="submit">Save Changes</button></b>
 </form>
+<br>
+</ol>
 </div>
 {% endblock %}

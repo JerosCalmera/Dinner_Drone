@@ -1,0 +1,20 @@
+{% extends 'base.jinja' %}
+{% block content %}
+<h2 class="page_title">{{ title }}</h2>
+<div class="button-outer">
+<form action="/customer_edit_entry/{{ customers.id }}/submit" method="post">
+
+<label for="customer_name">Customer name:</label>
+<input type="text" value="{{ customers.name }}" id="customer_name" required name="customer_name"> 
+<br>
+<label for="customer_phone">Customer phone number</label>
+<input type="number" value="{{ customers.phone }}" id="customer_phone" min=0 required name="customer_phone"> 
+<br>
+<label for="customer_address">Customer address:</label>
+<input type="text" size="45" value="{{ customers.address }}" id="customer_address" required name="customer_address"> 
+<br>
+<button class="button-small" type="submit">Save Changes</button>
+</form>
+</div>
+
+{% endblock %}

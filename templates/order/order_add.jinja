@@ -16,12 +16,14 @@
     <input type="date" id="order_date" required name="order_date"> 
     <br>
     <br>
-    <b>1: </b><label for="menu_item">Menu Item to add</label>
-    <select name="menu_item" id="menu_item"> 
+    </b>Menu Item to add:</b>
     {% for item in items %}
-    <option value="{{ item.id }}">{{ item.item_name }} £{{ item.item_price }}</option>
+    <br>
+    <input type="checkbox", id="item_{{ item.id }}", name="item_{{ item.id }}", value="item_{{ item.id }}">
+    </b><label for="item_{{ item.id }}"><b>{{ item.item_type }}</b> {{ item.item_name }} £{{ item.item_price }}</label>
     {% endfor %}
-    </select>
+
+    <br>
     <br>
     <button class="button-small" type="submit">Add To Order</button>
     </form>

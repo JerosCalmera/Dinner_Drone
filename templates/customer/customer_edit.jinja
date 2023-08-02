@@ -15,6 +15,8 @@
 <br>
 <button class="button-small" type="submit">Save Changes</button>
 </form>
+<b>Total spend by customer: £{{ customers.get_total_spend() }}</b><br>
+<b>Average spend per order by customer: £{{ customers.get_average_spend() }}</b><br>
 </div>
 
 {% endblock %}

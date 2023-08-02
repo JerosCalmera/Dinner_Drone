@@ -28,9 +28,10 @@
 </p>
 
 <p class="order">
-<b>Delivery fee:</b> £{{ delivery_fee }}<br>
-<b>Order total:</b> £{{ order_total }}<br>
-<b>Order total weight:</b> {{ order_total_weight }}g
+<b>Order total:</b> £{{ order.calculate_total() }}<br>
+<b>Delivery fee:</b> £{{ order.delivery_fee() }}<br>
+<b>Grand total:</b> £{{ order.calculate_g_total() }}<br>
+<b>Order total weight:</b> {{ order.calculate_weight() }}g
 </p>
 
 <p class="order">

@@ -15,28 +15,7 @@ def order_page():
 def order_details(id):
     order_history = OrdersHistory.query.get(id)
 
-    order_total = 0
-    for order_item in order_history.order_items:
-        order_total += order_item.menu.item_price
-
-    order_total_weight = 0
-    for order_item in order_history.order_items:
-        order_total_weight += order_item.menu.item_weight
-
-    delivery_fee = 5
-    order_total_d = order_total + delivery_fee
-
-    if order_total_weight > 300:
-        delivery_fee = 9.99
-        if order_total_weight > 800:
-            delivery_fee = 15.99
-            if order_total_weight > 1500:
-                delivery_fee = 29.99
-                if order_total_weight > 2500:
-                    order_total_weight = "Delivery Not Possible! Order over 2500"
-
-    return render_template("/order/order_single.jinja", title="Single Order Info", order = order_history, order_total = order_total, order_total_weight = order_total_weight, order_total_d = order_total_d, delivery_fee = delivery_fee)
-
+    return render_template("/order/order_single.jinja", title="Single Order Info", order = order_history)
 
 
 @order_blueprint.route("/order_edit_entry/<id>")
@@ -44,27 +23,7 @@ def order_edit(id):
     order_history = OrdersHistory.query.get(id)
     items = Menu.query.all()
 
-    order_total = 0
-    for order_item in order_history.order_items:
-        order_total += order_item.menu.item_price
-
-    order_total_weight = 0
-    for order_item in order_history.order_items:
-        order_total_weight += order_item.menu.item_weight
-
-    delivery_fee = 5
-    order_total_d = order_total + delivery_fee
-
-    if order_total_weight > 300:
-        delivery_fee = 9.99
-        if order_total_weight > 800:
-            delivery_fee = 15.99
-            if order_total_weight > 1500:
-                delivery_fee = 29.99
-                if order_total_weight > 2500:
-                    order_total_weight = "Delivery Not Possible! Order over 2500"
-
-    return render_template("/order/order_edit.jinja", title="Edit Order", items = items, order = order_history, order_total = order_total, order_total_weight = order_total_weight, order_total_d = order_total_d, delivery_fee = delivery_fee)
+    return render_template("/order/order_edit.jinja", title="Edit Order", items = items, order = order_history)
 
 
 @order_blueprint.route("/order_edit_entry/<id>/submit", methods = ["POST"])
@@ -93,27 +52,7 @@ def order_edit_date(id):
     order_history = OrdersHistory.query.get(id)
     items = Menu.query.all()
 
-    order_total = 0
-    for order_item in order_history.order_items:
-        order_total += order_item.menu.item_price
-
-    order_total_weight = 0
-    for order_item in order_history.order_items:
-        order_total_weight += order_item.menu.item_weight
-
-    delivery_fee = 5
-    order_total_d = order_total + delivery_fee
-
-    if order_total_weight > 300:
-        delivery_fee = 9.99
-        if order_total_weight > 800:
-            delivery_fee = 15.99
-            if order_total_weight > 1500:
-                delivery_fee = 29.99
-                if order_total_weight > 2500:
-                    order_total_weight = "Delivery Not Possible! Order over 2500"
-
-    return render_template("/order/order_edit_date.jinja", title="Edit Order", items = items, order = order_history, order_total = order_total, order_total_weight = order_total_weight, order_total_d = order_total_d, delivery_fee = delivery_fee)
+    return render_template("/order/order_edit_date.jinja", title="Edit Order", items = items, order = order_history)
 
 @order_blueprint.route("/order_edit_entry_date/<id>/submit", methods = ["POST"])
 def order_edit_submit_date(id):
@@ -161,7 +100,7 @@ def order_form_s():
             order_items = OrderItems(order_history_id = order_history.id, menu_items_id = item_id)
             db.session.add(order_items)
             db.session.commit()
-            
+
     order_history = OrdersHistory.query.order_by(OrdersHistory.id.desc()).all()
 
     return render_template("/order/orders.jinja", title="Order History", title_2="Order Added!", order_histories = order_history)

@@ -12,7 +12,7 @@ def seed():
     OrderItems.query.delete()
     Menu.query.delete()
     customer1 = Customers(name = "Jenny Wholesome", phone = "3452256234", address = "42 Arcadia Rd, Tadford")
-    customer2 = Customers(name = "Elle Abbot", phone = "3428349123", address = "19 Belle Vue Rd, Colchester")
+    customer2 = Customers(name = "Elle Abbot", phone = "3428349123", address = "19 Belle Vue Rd, Colchester",)
     customer3 = Customers(name = "Roberto Smith", phone = "1000667231", address = "742 Evergreen Terrace, Springton-On-Sea")
     customer4 = Customers(name = "Danny Almond", phone = "9982394157", address = "4 Crouch Lane, London")
     

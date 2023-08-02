@@ -9,18 +9,17 @@
 
 .info_title {
     text-align: left;
-    margin-left: 18px;
+    margin-left: 5px;
 }
 
 
 h3 {
     margin-top: 25px;
-    margin-left: 18px;
 }
 
 .info {
     line-height: 22px;
-    margin-left: 18px;
+    margin-left: 17px;
 }
 
 ol {
@@ -83,7 +82,7 @@ html {
 .button {
     background-color:rgb(222, 232, 253);
     color: #003aa6;
-    border-radius: 18px;
+    border-radius: 10px;
     padding: 15px;
     font-weight: bold;
     text-decoration: none;

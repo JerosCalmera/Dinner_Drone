@@ -13,17 +13,95 @@ class Customers(db.Model):
     name = db.Column(db.String(64))
     phone = db.Column(db.String(64))
     address = db.Column(db.String(64))
+    total_spend = db.Column(db.Numeric(precision=9, scale=2))
     order_history = db.relationship('OrdersHistory', backref='customer')
 
     def __repr__(self):
         return f"<Customer: {self.id}: {self.name}: {self.address}>"
+    
+    def get_total_spend(self):
+        total_spend = 0
+        for order_history in self.order_history:
+            for order_item in order_history.order_items:
+                total_spend += order_item.menu.item_price
 
+        return total_spend
+
+    def get_average_spend(self):
+        average_list = []
+        for order_history in self.order_history:
+                average_list.append(order_history)
+        
+        average_s = "{:.2f}".format(len(average_list))
+
+        total_spend = 0
+        for order_history in self.order_history:
+            for order_item in order_history.order_items:
+                total_spend += order_item.menu.item_price
+
+        if float(average_s) <= 0:
+            return 0
+
+        average_spend = float(total_spend) / float(average_s)
+        return "{:.2f}".format(average_spend)
+    
 class OrdersHistory(db.Model):
     __tablename__ = "orders_history"
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey("customers.id"))
     order_date = db.Column(db.Date,default = datetime)
     order_items = db.relationship('OrderItems', backref="orders_history")
+
+    def calculate_total(self):
+        order_total = 0
+        for order_item in self.order_items:
+            order_total += order_item.menu.item_price
+        return order_total
+
+    def delivery_fee(self):
+        order_total_weight = 0
+        delivery_fee = 5
+        for order_item in self.order_items:
+            order_total_weight += order_item.menu.item_weight
+
+        if order_total_weight > 300:
+            delivery_fee = 9.99
+            if order_total_weight > 800:
+                delivery_fee = 15.99
+                if order_total_weight > 1500:
+                    delivery_fee = 29.99
+                    if order_total_weight > 2500:
+                        order_total_weight = "Delivery Not Possible! Order over 2500"
+        return delivery_fee
+    
+    def calculate_weight(self):
+        order_total_weight = 0
+        for order_item in self.order_items:
+            order_total_weight += order_item.menu.item_weight
+        return order_total_weight
+
+    def calculate_g_total(self):
+        order_total = 0
+        order_total_weight = 0
+        delivery_fee = 5
+
+        for order_item in self.order_items:
+            order_total += order_item.menu.item_price
+
+        for order_item in self.order_items:
+            order_total_weight += order_item.menu.item_weight
+
+        if order_total_weight > 300:
+            delivery_fee = 9.99
+            if order_total_weight > 800:
+                delivery_fee = 15.99
+                if order_total_weight > 1500:
+                    delivery_fee = 29.99
+                    if order_total_weight > 2500:
+                        order_total_weight = "Delivery Not Possible! Order over 2500"
+
+            order_total_d = float(order_total) + delivery_fee
+        return order_total_d
 
 
 class OrderItems(db.Model):
@@ -37,6 +115,6 @@ class Menu(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     item_name = db.Column(db.String(64))
     item_type = db.Column(db.String(64))
-    item_price = db.Column(db.Numeric(precision=9, scale=2), nullable=False)
-    item_weight = db.Column(db.Numeric(precision=9, scale=0), nullable=False)
+    item_price = db.Column(db.Numeric(precision=9, scale=2))
+    item_weight = db.Column(db.Numeric(precision=9, scale=0))
     order_items = db.relationship('OrderItems', backref="menu")

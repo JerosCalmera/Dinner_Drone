@@ -10,7 +10,6 @@ def order_page():
     order_history = OrdersHistory.query.order_by(OrdersHistory.id.desc()).all()
     return render_template("/order/orders.jinja", title="Order History", order_histories = order_history)
 
-
 @order_blueprint.route("/order_entry/<id>")
 def order_details(id):
     order = OrdersHistory.query.get(id)
@@ -28,30 +27,48 @@ def order_edit_submit(id):
     order_items = OrderItems.query.get(id)
     items = Menu.query.all()
 
-    order.order_date = request.form ["order_date"]
-    db.session.commit()
+    db.session.query(OrderItems).filter(OrderItems.order_history_id==id).delete()
 
     items = request.form.keys()
     for key in items:
         if key[0:5] == "item_":
             item_id_trim = key.split("_") # returns ["item", "item_id"]
-            item_id = int(item_id_trim[1]) # list created, item is taken away and left with id 
-            order_items = OrderItems(order_history_id = order_history.id, menu_items_id = item_id)
-            db.session.add(order_items)
+            item_id = int(item_id_trim[1]) # list created, item is taken away, id remains 
+            order_items_to_add = OrderItems(order_history_id = order_history.id, menu_items_id = item_id)
+            db.session.add(order_items_to_add)
             db.session.commit()
 
     order_history = OrdersHistory.query.order_by(OrdersHistory.id.desc()).all()
     return render_template("/order/orders.jinja", title="Order History", title_2="Order Updated!", order_histories = order_history)
 
-def order_edit(id):
-    pass
-    # 1. Get form data (e.g., order_date = request.form["order_date"])
-    # 2. Get OrderHistory object by id
-    # 3. Update each OrderHistory attribute (e.g., order_history.order_date = order_date)
-    # 4. Get OrderItems by order_history_id and update the menu_items_id
-    # 5. db.session.commit()
 
+@order_blueprint.route("/order_edit_entry_date/<id>")
+def order_edit_date(id):
+    order = OrdersHistory.query.get(id)
+    items = Menu.query.all()
+    return render_template("/order/order_edit_date.jinja", title="Edit Order", order = order, items = items)
 
+@order_blueprint.route("/order_edit_entry_date/<id>/submit", methods = ["POST"])
+def order_edit_submit_date(id):
+    order_history = OrdersHistory.query.get(id)
+    order_items = OrderItems.query.get(id)
+    items = Menu.query.all()
+
+    order_history.order_date = request.form ["order_date"]
+    db.session.commit()
+    db.session.query(OrderItems).filter(OrderItems.order_history_id==id).delete()
+
+    items = request.form.keys()
+    for key in items:
+        if key[0:5] == "item_":
+            item_id_trim = key.split("_") # returns ["item", "item_id"]
+            item_id = int(item_id_trim[1]) # list created, item is taken away, id remains 
+            order_items_to_add = OrderItems(order_history_id = order_history.id, menu_items_id = item_id)
+            db.session.add(order_items_to_add)
+            db.session.commit()
+
+    order_history = OrdersHistory.query.order_by(OrdersHistory.id.desc()).all()
+    return render_template("/order/orders.jinja", title="Order History", title_2="Order Updated!", order_histories = order_history)
 
 @order_blueprint.route("/order_add_form")
 def order_form():

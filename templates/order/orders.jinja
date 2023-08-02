@@ -13,9 +13,8 @@
             <b>Customer Name:</b> {{ order_history.customer.name }}<br>
             <b>Order Id:</b> {{ order_history.id}}<br>
             <b>Order Date:</b> {{ order_history.order_date}}<br>
-            <b>View further details and edit:<a class="button-small" href="/order_entry/{{order_history.id}}">View</a></b> 
-            <br>
-            <b>Delete Order:<a class="button-small-delete" href="/order_delete_entry/{{order_history.id}}/delete">Delete</a></b>
+            <b>View further details and edit:<a class="button-small" href="/order_entry/{{ order_history.id }}">View</a></b><br>
+            <b>Delete Order:<a class="button-small-delete" href="/order_delete_entry/{{ order_history.id }}/delete">Delete</a></b>
             </ol>
             <br>
 {% endfor %}

@@ -14,9 +14,9 @@
 {% for order_item in order.order_items %}
 <b>Item ordered:</b> {{ order_item.menu.item_name }}<br>
 {% endfor %}
-<b>Edit Order:<a class="button-small" href="/order_edit_entry/{{order.id}}">Edit</a></b>
+<b>Edit Order:<a class="button-small" href="/order_edit_entry/{{ order.id }}">Edit</a></b>
 <br>
-<b>Delete Order:<a class="button-small-delete" href="/order_delete_entry/{{order.id}}/delete">Delete</a></b>
+<b>Delete Order:<a class="button-small-delete" href="/order_delete_entry/{{ order.id }}/delete">Delete</a></b>
 <br>
 </ol>
 <br>

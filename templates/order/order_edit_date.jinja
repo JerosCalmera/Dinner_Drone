@@ -3,7 +3,7 @@
 <h2 class="page_title">{{ title }}</h2>
 <div>
 <h2 class="alert">{{ title_2 }}</h2>
-<form action="/order_edit_entry/{{ order.id }}/submit" method="post">
+<form action="/order_edit_entry_date/{{ order.id }}/submit" method="post">
 <div class="button-outer">
 <br>
 <br>
@@ -18,7 +18,8 @@
 <br>
 <b>Order Id (locked): </b>{{ order.id}}
 <br>
-<label for="order_date"><b>Date of order:</b></label> ({{ order.order_date}}) <a class="button-small" href="/order_edit_entry_date/{{ order.id }}">Edit</a>
+<label for="order_date"><b>Confirm date of order:</b></label> ({{ order.order_date}})
+<input type="date" name="order_date" required id="order_date">
 <br>
 <br>
 <b>Existing order items:</b>
@@ -35,7 +36,7 @@
     <input type="checkbox", id="item_{{ item.id }}", name="item_{{ item.id }}", value="item_{{ item.id }}">
     </b><label for="item_{{ item.id }}"><b>{{ item.item_type }}</b> {{ item.item_name }} £{{ item.item_price }}</label>
     {% endfor %}
-<br>
+
 <b><button class="button-small" type="submit">Save Changes</button></b>
 </form>
 <br>

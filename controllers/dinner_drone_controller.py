@@ -8,6 +8,6 @@ dinner_drone_blueprint = Blueprint("dinner", __name__)
 def landing_page():
     return render_template("/index.jinja", title="Please select and option from the nav bar to continue")
 
-@dinner_drone_blueprint.route("/order")
+@dinner_drone_blueprint.route("/info")
 def order_page():
-    return render_template("/index.jinja", title="Customer Order History")
+    return render_template("/info.jinja", title="Important Information")

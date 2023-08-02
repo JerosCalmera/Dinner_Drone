@@ -16,10 +16,10 @@ def seed():
     customer3 = Customers(name = "Roberto Smith", phone = "1000667231", address = "742 Evergreen Terrace, Springton-On-Sea")
     customer4 = Customers(name = "Danny Almond", phone = "9982394157", address = "4 Crouch Lane, London")
     
-    menu_item_1 = Menu(item_name = "Salad", item_type = "Starter" , item_price = 4.99)
-    menu_item_2 = Menu(item_name = "Beef Stew", item_type = "Main", item_price = 9.99)
-    menu_item_3 = Menu(item_name = "Lemon Sorbet", item_type = "Dessert" , item_price = 5.99)
-    menu_item_4 = Menu(item_name = "Cola", item_type = "Drink", item_price = 0.99)
+    menu_item_1 = Menu(item_name = "Salad", item_type = "Starter" , item_price = 4.99, item_weight = 60)
+    menu_item_2 = Menu(item_name = "Beef Stew", item_type = "Main", item_price = 9.99, item_weight = 720)
+    menu_item_3 = Menu(item_name = "Lemon Sorbet", item_type = "Dessert" , item_price = 5.99, item_weight = 80)
+    menu_item_4 = Menu(item_name = "Cola", item_type = "Drink", item_price = 0.99, item_weight = 500)
 
     db.session.add(customer1)
     db.session.add(customer2)

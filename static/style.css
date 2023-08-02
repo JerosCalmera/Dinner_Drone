@@ -3,6 +3,30 @@
     padding: 0px;
 }
 
+.order {
+    margin: 18px;
+}
+
+.info_title {
+    text-align: left;
+    margin-left: 18px;
+}
+
+
+h3 {
+    margin-top: 25px;
+    margin-left: 18px;
+}
+
+.info {
+    line-height: 22px;
+    margin-left: 18px;
+}
+
+ol {
+    margin-left: 18px;
+}
+
 .list-outer {
     display: flex;
     flex-flow: wrap;
@@ -114,12 +138,11 @@ html {
     padding-inline: 5px;
 }
 
-footer{
+footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     background-color: #003aa6;
     color: white;
-    text-weight:bold;
     text-align: center;
 }

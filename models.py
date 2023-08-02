@@ -38,4 +38,5 @@ class Menu(db.Model):
     item_name = db.Column(db.String(64))
     item_type = db.Column(db.String(64))
     item_price = db.Column(db.Numeric(precision=9, scale=2), nullable=False)
+    item_weight = db.Column(db.Numeric(precision=9, scale=0), nullable=False)
     order_items = db.relationship('OrderItems', backref="menu")

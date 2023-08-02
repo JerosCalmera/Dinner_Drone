@@ -4,22 +4,35 @@
 <h2 class="alert">{{ title_2 }}</h2>
 <div class="button-outer">
 <a class="button-small" href="/order_add_form">Add a new order</a>
-<br>
-<br>
+
+<p class="order">
 <b>Customer Name:</b> {{ order.customer.name }}<br>
 <b>Customer Phone Number:</b> {{ order.customer.phone}}<br>          
 <b>Customer Address:</b> {{ order.customer.address}}<br>
 <b>Order Id:</b> {{ order.id}}<br>
 <b>Order Date:</b> {{ order.order_date}}<br>
+</p>
+
+<p class="order">
+<ol><b>Items ordered:</b><br>
 {% for order_item in order.order_items %}
-<b>Item ordered:</b> {{ order_item.menu.item_name }}<br>
+<b>{{ order_item.menu.item_name }}</b> £{{ order_item.menu.item_price }}, ({{ order_item.menu.item_weight }}g) <br>
 {% endfor %}
+</ol>
+</p>
+
+<p class="order">
+<b>Delivery fee:</b> £{{ delivery_fee }}<br>
+<b>Order total:</b> £{{ order_total_d }}<br>
+<b>Order total weight:</b> {{ order_total_weight }}g
+</p>
+
+<p class="order">
 <b>Edit Order:<a class="button-small" href="/order_edit_entry/{{ order.id }}">Edit</a></b>
 <br>
 <b>Delete Order:<a class="button-small-delete" href="/order_delete_entry/{{ order.id }}/delete">Delete</a></b>
-<br>
-</ol>
-<br>
+</p>
+
 
 </div>
 {% endblock %}

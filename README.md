@@ -19,7 +19,7 @@ Be able to set an order as dispatched and delivered
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-To run: create a SQL database and init with flask, instructions below for SQLAlchemy to be entered into terminal in the Dinner_Drone root directory.
+To run: create a SQL database and init with flask, instructions below for SQLAlchemy to be entered into terminal in the dinner_drone root directory.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 createdb dinner_drone

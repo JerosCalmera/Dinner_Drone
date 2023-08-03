@@ -15,7 +15,7 @@
 <p class="order">
 <ol><b>Items ordered:</b><br>
     {% for order_item in order_histories.order_items %}
-        <b>{{ order_item.menu.item_name }}</b> £{{ order_item.menu.item_price }} ({{ order_item.menu.item_weight }}g) <br>
+        <b>{{ order_item.menu.item_name }} ({{ order_item.menu.item_type }}):</b> £{{ order_item.menu.item_price }} ({{ order_item.menu.item_weight }}g) <br>
     {% endfor %}
 </ol>
 </p>

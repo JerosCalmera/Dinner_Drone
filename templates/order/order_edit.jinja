@@ -25,9 +25,12 @@
 <p class="order">
 <ol><b>Existing order items:</b><br>
     {% for order_item in order_histories.order_items %}
-        <b>{{ order_item.menu.item_name }}</b> £{{ order_item.menu.item_price }} ({{ order_item.menu.item_weight }}g) <br>
+        <b>{{ order_item.menu.item_name }} ({{ order_item.menu.item_type }}):</b>  £{{ order_item.menu.item_price }} ({{ order_item.menu.item_weight }}g) <br>
     {% endfor %}
 </ol>
+<p class="order">
+<b>Clear Order: <a class="button-small-delete" href="/order_delete_items/{{ order_histories.id }}/delete">Clear</a></b>
+</p>
 </p>
 <div class="order_totals">
 <p class="order">
@@ -42,7 +45,7 @@
     {% for item in items %}
     <br>
         <input type="checkbox", id="item_{{ item.id }}", name="item_{{ item.id }}", value="item_{{ item.id }}">
-        </b><label for="item_{{ item.id }}"><b>{{ item.item_name }}</b> £{{ item.item_price }} ({{ item.item_weight }}g)</label>
+        </b><label for="item_{{ item.id }}"><b>{{ item.item_name }} ({{ item.item_type }}):</b> £{{ item.item_price }} ({{ item.item_weight }}g)</label>
     {% endfor %}
 </p>
 </div>

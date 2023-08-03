@@ -16,10 +16,10 @@
 </select>
 <br>
 	<label for="item_price"><b>Item price: £</b></label>
-	<input type="number" min="0" step=".01" value="{{ menu.item_price }}" style="width: 45px;" id="item_price" required name="item_price">
+	<input type="number" min="0.01" step=".01" value="{{ menu.item_price }}" style="width: 45px;" id="item_price" required name="item_price">
 <br>
 	<label for="item_weight"><b>Item weight: (grams)</b></label>
-	<input type="number" min="0" value="{{ menu.item_weight }}" style="width: 45px;" id="item_weight" required name="item_weight"> 
+	<input type="number" min="1" value="{{ menu.item_weight }}" style="width: 45px;" id="item_weight" required name="item_weight"> 
 <br>
 <div class="button-outer">
 	<button class="button-small" type="submit">Save Changes</button>

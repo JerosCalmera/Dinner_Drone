@@ -2,23 +2,22 @@
 {% block content %}
 <h2 class="page_title">{{ title }}</h2>
 <h2 class="alert">{{ title_2 }}</h2>
-<div class="button-outer">
-<a class="button-small" href="/customer_add_entry">Add a new customer</a>
-<br>
-<div class="list-outer">
-{% for customer in customers %}
-            <br>
-            <ol class="list-inner">
+<div class="button-outer-2">
+    <a class="button-small" href="/customer_add_entry">Add a new customer</a>
+    </div>
+    <div class="list-outer">
+        {% for customer in customers %}
+        <br>
+        <ol class="list-inner">
             <b>Customer Name:</b> {{ customer.name }}<br>
             <b>Customer Phone Number:</b> {{ customer.phone}}<br>          
             <b>Customer Address:</b> {{ customer.address}}<br>
-            <b>Spend information and update customer information: <a class="button-small" href="/customer_edit_entry/{{ customer.id }}">Edit</a></b><br> 
-            <b>Delete Customer:<a class="button-small-delete" href="/customer_delete_entry/{{ customer.id }}/delete">Delete</a></b> 
-            </ol>
-            <br>
-            <br>
-{% endfor %}
-</div>
+            <b>Spend information and update customer details: <a class="button-small" href="/customer_edit_entry/{{ customer.id }}">Edit</a></b><br> 
+            <b>Delete Customer: <a class="button-small-delete" href="/customer_delete_entry/{{ customer.id }}/delete">Delete</a></b> 
+        </ol>
+        <br>
+        <br>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
-

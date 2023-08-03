@@ -1,22 +1,22 @@
 {% extends 'base.jinja' %}
 {% block content %}
 <h2 class="page_title">{{ title }}</h2>
-<div class="button-outer">
-<form action="/customer_edit_entry/{{ customers.id }}/submit" method="post">
-
-<label for="customer_name">Customer name:</label>
-<input type="text" value="{{ customers.name }}" id="customer_name" required name="customer_name"> 
-<br>
-<label for="customer_phone">Customer phone number</label>
-<input type="number" value="{{ customers.phone }}" id="customer_phone" min=0 required name="customer_phone"> 
-<br>
-<label for="customer_address">Customer address:</label>
-<input type="text" size="45" value="{{ customers.address }}" id="customer_address" required name="customer_address"> 
-<br>
-<button class="button-small" type="submit">Save Changes</button>
-</form>
-<b>Total spend by customer: £{{ customers.get_total_spend() }}</b><br>
-<b>Average spend per order by customer: £{{ customers.get_average_spend() }}</b><br>
+<div class="order">
+    <form action="/customer_edit_entry/{{ customers.id }}/submit" method="post">
+        <label for="customer_name"><b>Customer name:</b></label>
+        <input type="text" value="{{ customers.name }}" id="customer_name" required name="customer_name"> 
+        <br>
+        <label for="customer_phone"><b>Customer phone number</b></label>
+        <input type="number" value="{{ customers.phone }}" id="customer_phone" min=0 required name="customer_phone"> 
+        <br>
+        <label for="customer_address"><b>Customer address:</b></label>
+        <input type="text" size="45" value="{{ customers.address }}" id="customer_address" required name="customer_address"> 
+        <br>
+    <b>Total spend by customer: </b>£{{ customers.get_total_spend() }}<br>
+    <b>Average spend per order by customer: </b>£{{ customers.get_average_spend() }}<br>
+    </div>
+    <div class="button-outer-3">
+    <button class="button-small" type="submit">Save Changes</button>
+    </form>
 </div>
-
 {% endblock %}

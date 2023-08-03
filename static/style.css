@@ -3,17 +3,34 @@
     padding: 0px;
 }
 
+.landing_page {
+    margin-top: 5%;
+    align-content: center;
+    color: #00328f;
+}
+
+b {
+    color: #00328f;
+}
+
+h3 {
+    color: #00328f;
+}
+
 body {
     margin-bottom: 50px;
 }
 
 .order {
     margin: 18px;
+    line-height: 1.7;
+    padding-inline: 5px;
 }
 
 .info_title {
     text-align: left;
-    margin-left: 5px;
+    margin-left: 16px;
+    color: #00328f;
 }
 
 h3 {
@@ -26,8 +43,9 @@ h3 {
 }
 
 ol {
-    margin-left: 18px;
+    margin-left: 23px;
     margin-bottom: 18px;
+    line-height: 1.7;
 }
 
 .list-outer {
@@ -62,7 +80,7 @@ h2 {
 }
 
 .page_title{
-    color: #003aa6
+    color: #00328f
 }
 
 .alert {
@@ -71,11 +89,11 @@ h2 {
 
 .nav_bar {
     text-align: center;
-    color: #003aa6;
+    color: #00328f;
     padding: 25px;
     padding-top: 5px;
-    border-bottom: 2px solid #003aa6;
-    background-color: #003aa625;
+    border-bottom: 2px solid #00328f;
+    background-color: #00328f25;
 }
 
 html {
@@ -87,38 +105,39 @@ html {
 
 .button {
     background-color:rgb(222, 232, 253);
-    color: #003aa6;
+    color: #00328f;
     border-radius: 10px;
     padding: 15px;
     font-weight: bold;
     text-decoration: none;
-    border-color:  #003aa6;
+    border-color:  #00328f;
     border-style: solid;
     margin: 4px;
 }
 
 .button:hover {
     color: white;
-    background-color: #003aa6;
+    background-color: #00328f;
     transition: 0.2s;
 }
 
 .button-small {
     background-color:rgb(222, 232, 253);
-    color: #003aa6;
+    color: #00328f;
     border-radius: 9px;
     padding: 2px;
     font-weight: bold;
     text-decoration: none;
-    border-color: #003aa6;
+    border-color: #00328f;
     border-style: solid;
 }
 
 .button-small:hover {
     color: white;
-    background-color: #003aa6;
+    background-color: #00328f;
     transition: 0.2s;
 }
+
 
 .button-small-delete {
     background-color:white;
@@ -127,7 +146,7 @@ html {
     padding: 2px;
     font-weight: bold;
     text-decoration: none;
-    border-color: #003aa6;
+    border-color: #00328f;
     border-style: solid;
 }
 
@@ -140,12 +159,21 @@ html {
 
 .button-outer{
     line-height: 1.7;
-    padding-inline: 5px;
 }
 
+.button-outer-2{
+    padding-left: 39px;
+    line-height: 1.7;
+}
+
+.button-outer-3{
+    padding-left: 22px;
+}
+
+
 .order_totals{
-    border-bottom: 2px solid #003aa6;
-    border-top: 2px solid #003aa6;
+    border-bottom: 2px solid #00328f;
+    border-top: 2px solid #00328f;
     position: relative;
     width: 581px;
 }
@@ -154,7 +182,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #003aa6;
+    background-color: #00328f;
     color: white;
     text-align: center;
 }

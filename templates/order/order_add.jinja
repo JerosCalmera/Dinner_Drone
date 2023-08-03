@@ -1,8 +1,7 @@
 {% extends 'base.jinja' %}
 {% block content %}
 <h2 class="page_title">{{ title }}</h2>
-<div class="button-outer">
-
+<div class="order">
 <form action="/order_add" method="post">
     <label for="customer_id"><b>Customer:</b></label>
     <select name="customer_id" id="customer_id"> 
@@ -17,12 +16,14 @@
     <textarea id="order_notes" name="order_notes" rows="4" cols="50">Not delivered</textarea><br>
     <b>Menu Item to add:</b>
     {% for item in items %}
-    <br>
-    <input type="checkbox", id="item_{{ item.id }}", name="item_{{ item.id }}", value="item_{{ item.id }}">
-    </b><label for="item_{{ item.id }}"><b>{{ item.item_type }}</b> {{ item.item_name }} £{{ item.item_price }}</label>
+        <br>
+        <input type="checkbox", id="item_{{ item.id }}", name="item_{{ item.id }}", value="item_{{ item.id }}">
+        </b><label for="item_{{ item.id }}"><b>{{ item.item_type }}</b> {{ item.item_name }} £{{ item.item_price }}</label>
     {% endfor %}
-
+    <div class="button-outer"></div>
     <button class="button-small" type="submit">Add To Order</button>
+    </div>
     </form>
+</div>
 </div>
 {% endblock %}

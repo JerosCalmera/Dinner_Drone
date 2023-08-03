@@ -1,26 +1,29 @@
 {% extends 'base.jinja' %}
 {% block content %}
 <h2 class="page_title">{{ title }}</h2>
-<div class="button-outer">
 <form action="/menu_edit_entry/{{ menu.id }}/submit" method="post">
-
-<label for="item_name">Item name:</label>
-<input type="text" value="{{ menu.item_name }}" required name="item_name"> 
+<div class="order">
+	<label for="item_name"><b>Item name:</b></label>
+	<input type="text" value="{{ menu.item_name }}" required name="item_name"> 
 <br>
-<label for="item_type">Item type: (Current: {{ menu.item_type }})</label>
-<select name="item_type" value="{{ menu.item_name }}" id="item_type" required name="item_type"> 
-        <option value="None">None</option>
-        <option value="Starter">Starter</option>
-        <option value="Main">Main</option>
-        <option value="Dessert">Dessert</option>
-        <option value="Drink">Drink</option>
-        </select>
+	<label for="item_type"><b>Item type: (Current: {{ menu.item_type }})</b></label>
+<select name="item_type" value="{{ menu.item_name }}" id="item_type" required name="item_type">
+	<option value="None">None</option>
+	<option value="Starter">Starter</option>
+	<option value="Main">Main</option>
+	<option value="Dessert">Dessert</option>
+	<option value="Drink">Drink</option>
+</select>
 <br>
-<label for="item_price">Item price: £</label>
-<input type="text" value="{{ menu.item_price }}" style="width: 45px;" id="item_price" required name="item_price">
+	<label for="item_price"><b>Item price: £</b></label>
+	<input type="number" min="0" step=".01" value="{{ menu.item_price }}" style="width: 45px;" id="item_price" required name="item_price">
 <br>
-<label for="item_weight">Item weight: (grams)</label>
-<input type="text" value="{{ menu.item_weight }}" style="width: 45px;" id="item_weight" required name="item_weight"> 
+	<label for="item_weight"><b>Item weight: (grams)</b></label>
+	<input type="number" min="0" value="{{ menu.item_weight }}" style="width: 45px;" id="item_weight" required name="item_weight"> 
 <br>
-<button class="button-small" type="submit">Save Changes</button>
+<div class="button-outer">
+	<button class="button-small" type="submit">Save Changes</button>
+</form>
+</div>
+</div>
 {% endblock %}

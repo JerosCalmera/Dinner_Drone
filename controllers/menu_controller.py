@@ -1,6 +1,6 @@
 from flask import render_template, redirect, Blueprint, request
 from app import db
-from models import Customers, OrdersHistory, OrderItems, Menu
+from models.models import Customer, OrderHistory, OrderItem, Menu
 
 menu_blueprint = Blueprint("menu", __name__)
 
@@ -52,7 +52,7 @@ def menu_add():
 
 @menu_blueprint.route("/menu_item_delete/<id>/delete")
 def menu_delete(id):
-    db.session.query(OrderItems).filter(OrderItems.menu_items_id==id).delete()
+    db.session.query(OrderItem).filter(OrderItem.menu_items_id==id).delete()
     db.session.query(Menu).filter(Menu.id==id).delete()
     db.session.commit()
     

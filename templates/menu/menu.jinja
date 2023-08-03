@@ -2,24 +2,22 @@
 {% block content %}
 <h2 class="page_title">{{ title }}</h2>
 <h2 class="alert">{{ title_2 }}</h2>
-<div class="button-outer">
-<a class="button-small" href="/menu_add_item">Add a new menu item</a>
-<br>
-<div class="list-outer">
-{% for menu in menu %}
-            <br>
-            <ol class="list-inner">
-            <b>Name:</b> {{ menu.item_name }}<br>
-            <b>Type of item:</b> {{ menu.item_type }}<br>
-            <b>Item price:</b> £{{ menu.item_price }}<br>
-            <b>Item weight:</b> {{ menu.item_weight }}g<br>
-            <b>Edit menu item: <a class="button-small" href="/menu_edit_entry/{{ menu.id }}">Edit</a></b><br>
-            <b>Delete Item:<a class="button-small-delete" href="/menu_item_delete/{{ menu.id }}/delete">Delete</a></b> 
-            </ol>
-            <br>
-            <br>
-{% endfor %}
-</div>
+<div class="button-outer-2">
+	<a class="button-small" href="/menu_add_item">Add a new menu item</a>
+    </div>
+	<div class="list-outer">
+		{% for menu in menu %}
+		<br>
+		<ol class="list-inner">
+			<b>Name:</b> {{ menu.item_name }}<br>
+			<b>Type of item:</b> {{ menu.item_type }}<br>
+			<b>Item price:</b> £{{ menu.item_price }}<br>
+			<b>Item weight:</b> {{ menu.item_weight }}g<br>
+			<b>Edit menu item: <a class="button-small" href="/menu_edit_entry/{{ menu.id }}">Edit</a></b><br>
+			<b>Delete Item: <a class="button-small-delete" href="/menu_item_delete/{{ menu.id }}/delete">Delete</a></b> 
+		</ol>
+		<br>
+		{% endfor %}
+	</div>
 </div>
 {% endblock %}
-

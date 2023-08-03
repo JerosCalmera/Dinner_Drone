@@ -11,13 +11,12 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://user:@localhost:5432/dinne
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-# Import and Register Controllers
-from models import Customers, OrdersHistory, OrderItems, Menu
+from models.models import Customer, OrderHistory, OrderItem, Menu
 
 from controllers.dinner_drone_controller import dinner_drone_blueprint
 from controllers.menu_controller import menu_blueprint
-from controllers.customer_controller import customer_blueprint
-from controllers.order_controller import order_blueprint
+from controllers.customers_controller import customer_blueprint
+from controllers.orders_controller import order_blueprint
 
 app.register_blueprint(dinner_drone_blueprint)
 app.register_blueprint(menu_blueprint)

@@ -24,30 +24,31 @@
 
 <p class="order">
 <ol><b>Existing order items:</b><br>
-{% for order_item in order_histories.order_items %}
-<b>{{ order_item.menu.item_name }}</b> £{{ order_item.menu.item_price }}, ({{ order_item.menu.item_weight }}g) <br>
-{% endfor %}
+    {% for order_item in order_histories.order_items %}
+        <b>{{ order_item.menu.item_name }}</b> £{{ order_item.menu.item_price }} ({{ order_item.menu.item_weight }}g) <br>
+    {% endfor %}
 </ol>
 </p>
 <div class="order_totals">
 <p class="order">
-<b>Order total:</b> £{{ order_histories.calculate_total() }}<br>
-<b>Delivery fee:</b> £{{ order_histories.delivery_fee() }}<br>
-<b>Grand total:</b> £{{ order_histories.calculate_g_total() }}<br>
-<b>Order total weight:</b> {{ order_histories.calculate_weight() }}g
+    <b>Order total:</b> £{{ order_histories.calculate_total() }}<br>
+    <b>Delivery fee:</b> £{{ order_histories.delivery_fee() }}<br>
+    <b>Grand total:</b> £{{ order_histories.calculate_g_total() }}<br>
+    <b>Order total weight:</b> {{ order_histories.calculate_weight() }}g
 </p>
 </div>
 <p class="order">
 <ol><b>Enter any changes here:</b>
     {% for item in items %}
     <br>
-    <input type="checkbox", id="item_{{ item.id }}", name="item_{{ item.id }}", value="item_{{ item.id }}">
-    </b><label for="item_{{ item.id }}"><b>{{ item.item_name }}</b> £{{ item.item_price }}, ({{ item.item_weight }}g)</label>
+        <input type="checkbox", id="item_{{ item.id }}", name="item_{{ item.id }}", value="item_{{ item.id }}">
+        </b><label for="item_{{ item.id }}"><b>{{ item.item_name }}</b> £{{ item.item_price }} ({{ item.item_weight }}g)</label>
     {% endfor %}
 </p>
 </div>
-<b><button class="button-small" type="submit">Save Changes</button></b>
-
+<div class="button-outer-3">
+<button class="button-small" type="submit">Save Changes</button>
+<div>
 </form>
 </ol>
 

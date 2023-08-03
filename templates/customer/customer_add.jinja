@@ -1,20 +1,20 @@
 {% extends 'base.jinja' %}
 {% block content %}
 <h2 class="page_title">{{ title }}</h2>
-<div class="button-outer">
-<form action="/customer_add" method="post">
-
-<label for="customer_name">Customer name:</label>
-<input type="text" id="customer_name" required name="customer_name"> 
-<br>
-<label for="customer_phone">Customer phone number</label>
-<input type="number" id="customer_phone" min=0 required name="customer_phone"> 
-<br>
-<label for="customer_address">Customer address:</label>
-<input type="text" id="customer_address" required name="customer_address"> 
-<br>
-<button class="button-small" type="submit">Add Customer</button>
-</form>
+<div class="order">
+    <form action="/customer_add" method="post">
+        <label for="customer_name"><b>Customer name:</b></label>
+        <input type="text" id="customer_name" required name="customer_name"> 
+        <br>
+        <label for="customer_phone"><b>Customer phone number</b></label>
+        <input type="number" id="customer_phone" min=0 required name="customer_phone"> 
+        <br>
+        <label for="customer_address"><b>Customer address:</b></label>
+        <input type="text" id="customer_address" required name="customer_address"> 
+        <br>
+        <div class="button-outer">
+        <button class="button-small" type="submit"><b>Add Customer</b></button>
+        </div>
+    </form>
 </div>
-
 {% endblock %}

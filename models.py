@@ -1,5 +1,6 @@
 from app import db
 from datetime import datetime
+from decimal import Decimal
 # Example Model
 # ------------------------------------------------
 # class User(db.Model):
@@ -13,8 +14,7 @@ class Customers(db.Model):
     name = db.Column(db.String(64))
     phone = db.Column(db.String(64))
     address = db.Column(db.String(64))
-    total_spend = db.Column(db.Numeric(precision=9, scale=2))
-    order_history = db.relationship('OrdersHistory', backref='customer')
+    order_history = db.relationship('OrdersHistory', backref='customer', cascade='all, delete')
 
     def __repr__(self):
         return f"<Customer: {self.id}: {self.name}: {self.address}>"
@@ -50,7 +50,8 @@ class OrdersHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey("customers.id"))
     order_date = db.Column(db.Date,default = datetime)
-    order_items = db.relationship('OrderItems', backref="orders_history")
+    order_notes = db.Column(db.String(64))
+    order_items = db.relationship('OrderItems', backref="orders_history", cascade='all, delete')
 
     def calculate_total(self):
         order_total = 0
@@ -71,9 +72,13 @@ class OrdersHistory(db.Model):
                 if order_total_weight > 1500:
                     delivery_fee = 29.99
                     if order_total_weight > 2500:
-                        order_total_weight = "Delivery Not Possible! Order over 2500"
+                        delivery_fee = "----<b class=alert>Delivery Not Possible! Order over 2500g</b>----"
+                        
         return delivery_fee
-    
+
+    def confirm_delivery(self, delivered):
+        self.delivered = delivered
+
     def calculate_weight(self):
         order_total_weight = 0
         for order_item in self.order_items:
@@ -97,11 +102,10 @@ class OrdersHistory(db.Model):
                 delivery_fee = 15.99
                 if order_total_weight > 1500:
                     delivery_fee = 29.99
-                    if order_total_weight > 2500:
-                        order_total_weight = "Delivery Not Possible! Order over 2500"
 
-            order_total_d = float(order_total) + delivery_fee
-        return order_total_d
+
+        order_total_d = order_total + Decimal(delivery_fee)
+        return "{:.2f}".format(order_total_d)
 
 
 class OrderItems(db.Model):

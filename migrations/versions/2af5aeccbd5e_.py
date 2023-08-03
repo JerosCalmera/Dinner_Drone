@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: d68b2186f7db
+Revision ID: 2af5aeccbd5e
 Revises: 
-Create Date: 2023-08-02 14:18:11.825687
+Create Date: 2023-08-02 21:37:09.312842
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'd68b2186f7db'
+revision = '2af5aeccbd5e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,21 +23,21 @@ def upgrade():
     sa.Column('name', sa.String(length=64), nullable=True),
     sa.Column('phone', sa.String(length=64), nullable=True),
     sa.Column('address', sa.String(length=64), nullable=True),
-    sa.Column('total_spend', sa.Numeric(precision=9, scale=2), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('menu',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('item_name', sa.String(length=64), nullable=True),
     sa.Column('item_type', sa.String(length=64), nullable=True),
-    sa.Column('item_price', sa.Numeric(precision=9, scale=2), nullable=False),
-    sa.Column('item_weight', sa.Numeric(precision=9, scale=0), nullable=False),
+    sa.Column('item_price', sa.Numeric(precision=9, scale=2), nullable=True),
+    sa.Column('item_weight', sa.Numeric(precision=9, scale=0), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('orders_history',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('customer_id', sa.Integer(), nullable=True),
     sa.Column('order_date', sa.Date(), nullable=True),
+    sa.Column('order_notes', sa.String(length=64), nullable=True),
     sa.ForeignKeyConstraint(['customer_id'], ['customers.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

@@ -3,40 +3,43 @@
 <h2 class="page_title">{{ title }}</h2>
 <div>
 <h2 class="alert">{{ title_2 }}</h2>
-<form action="/order_edit_entry_date/{{ order.id }}/submit" method="post">
+<form action="/order_edit_entry_date/{{ order_histories.id }}/submit" method="post">
 <div class="button-outer">
 
 <p class="order">
 <label for="customer_id"><b>Customer name</b></label>
-<input type= "text" disabled required name="customer_id" value="{{ order.customer.name }}" id="customer_id"> 
+<input type= "text" disabled required name="customer_id" value="{{ order_histories.customer.name }}" id="customer_id"> 
 <br>    
 <label for="customer_phone"><b>Customer phone number:</b></label>
-<input type= "text" disabled required name="customer_phone" value="{{ order.customer.phone }}" id="customer_phone"> 
+<input type= "text" disabled required name="customer_phone" value="{{ order_histories.customer.phone }}" id="customer_phone"> 
 <br>
 <label for="customer_address"><b>Customer address:</b></label>
-<input type= "text" size="45" disabled required name="customer_address" value="{{ order.customer.address }}" id="customer_address"> 
+<input type= "text" size="45" disabled required name="customer_address" value="{{ order_histories.customer.address }}" id="customer_address"> 
 <br>
-<b>Order Id (locked): </b>{{ order.id}}
+<b>Order Id (locked): </b>{{ order_histories.id}}
 <br>
-<label for="order_date"><b>Order date:</b></label> ({{ order.order_date}})
-<input type="date" name="order_date" required id="order_date">
+<label for="order_date"><b>Order date:</b></label> ({{ order_histories.order_date}})
+<input type="date" name="order_date" required id="order_date"><br>
+
+<label for="order_notes"><b>Order notes:</b></label><br>
+<textarea id="order_notes" name="order_notes" rows="4" cols="50">{{ order_histories.order_notes }}</textarea><br>
 </p>
 
 <p class="order">
 <ol><b>Existing order items:</b><br> 
-{% for order_item in order.order_items %}
+{% for order_item in order_histories.order_items %}
 <b>{{ order_item.menu.item_name }}</b> £{{ order_item.menu.item_price }}, ({{ order_item.menu.item_weight }}g) <br>
 {% endfor %}
 </ol>
 </p>
-
+<div class="order_totals">
 <p class="order">
-<b>Order total:</b> £{{ order.calculate_total() }}<br>
-<b>Delivery fee:</b> £{{ order.delivery_fee() }}<br>
-<b>Grand total:</b> £{{ order.calculate_g_total() }}<br>
-<b>Order total weight:</b> {{ order.calculate_weight() }}g
+<b>Order total:</b> £{{ order_histories.calculate_total() }}<br>
+<b>Delivery fee:</b> £{{ order_histories.delivery_fee() }}<br>
+<b>Grand total:</b> £{{ order_histories.calculate_g_total() }}<br>
+<b>Order total weight:</b> {{ order_histories.calculate_weight() }}g
 </p>
-
+</div>
 <p class="order">
 <ol><b>Enter any changes here:</b>
     {% for item in items %}
@@ -45,10 +48,10 @@
     </b><label for="item_{{ item.id }}"><b>{{ item.item_name }}</b> £{{ item.item_price }}, ({{ item.item_weight }}g)</label>
     {% endfor %}
 </p>
-
+</div>
 <b><button class="button-small" type="submit">Save Changes</button></b>
 
 </form>
 </ol>
-</div>
+
 {% endblock %}

@@ -19,9 +19,8 @@ def customer_add():
     customer_name = request.form ["customer_name"]
     customer_phone = request.form ["customer_phone"]
     customer_address = request.form ["customer_address"]
-    customer_spend = 0
 
-    customer = Customers(name = customer_name, phone = customer_phone, address = customer_address, total_spend = customer_spend)
+    customer = Customers(name = customer_name, phone = customer_phone, address = customer_address)
 
     db.session.add(customer)
     db.session.commit()
@@ -45,16 +44,16 @@ def customer_edit_submit(id):
 
     db.session.commit()
 
-    customers = Customers.query.all()
-    return render_template("/customer/customers.jinja", title="Customer Details", title_2="Customer Details Updated!", customers=customers)
+    customer = Customers.query.all()
+    return render_template("/customer/customers.jinja", title="Customer Details", title_2="Customer Details Updated!", customers=customer)
 
 @customer_blueprint.route("/customer_delete_entry/<id>/delete")
 def customer_delete(id):
-    db.session.query(OrderItems).filter(OrderItems.order_history_id==id).delete()
-    db.session.query(OrdersHistory).filter(OrdersHistory.customer_id==id).delete()
-    db.session.query(Customers).filter(Customers.id==id).delete()
+    c_del = db.session.query(Customers).filter_by(id=id).first()
+    db.session.delete(c_del)
     db.session.commit()
-    customers = Customers.query.all()
-    return render_template("/customer/customers.jinja", title="Customer Information", title_2="Customer Details Removed!", customers=customers)
+
+    customer = Customers.query.all()
+    return render_template("/customer/customers.jinja", title="Customer Information", title_2="Customer Details Removed!", customers=customer)
 
 

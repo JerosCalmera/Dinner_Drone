@@ -14,16 +14,14 @@ def order_page():
 @order_blueprint.route("/order_entry/<id>")
 def order_details(id):
     order_history = OrdersHistory.query.get(id)
-
-    return render_template("/order/order_single.jinja", title="Single Order Info", order = order_history)
+    return render_template("/order/order_single.jinja", title="Single Order Info", order_histories = order_history)
 
 
 @order_blueprint.route("/order_edit_entry/<id>")
 def order_edit(id):
     order_history = OrdersHistory.query.get(id)
     items = Menu.query.all()
-
-    return render_template("/order/order_edit.jinja", title="Edit Order", items = items, order = order_history)
+    return render_template("/order/order_edit.jinja", title="Edit Order", items = items, order_histories = order_history)
 
 
 @order_blueprint.route("/order_edit_entry/<id>/submit", methods = ["POST"])
@@ -51,8 +49,7 @@ def order_edit_submit(id):
 def order_edit_date(id):
     order_history = OrdersHistory.query.get(id)
     items = Menu.query.all()
-
-    return render_template("/order/order_edit_date.jinja", title="Edit Order", items = items, order = order_history)
+    return render_template("/order/order_edit_date.jinja", title="Edit Order", items = items, order_histories = order_history)
 
 @order_blueprint.route("/order_edit_entry_date/<id>/submit", methods = ["POST"])
 def order_edit_submit_date(id):
@@ -80,7 +77,6 @@ def order_edit_submit_date(id):
 def order_form():
     customers = Customers.query.all()
     items = Menu.query.all()
-    
     return render_template("/order/order_add.jinja", title="Add An Order Entry Form", customers=customers, items=items)
 
 @order_blueprint.route("/order_add", methods = ["POST"])
@@ -107,8 +103,11 @@ def order_form_s():
 
 @order_blueprint.route("/order_delete_entry/<id>/delete")
 def order_delete(id):
-    db.session.query(OrderItems).filter(OrderItems.order_history_id==id).delete()
-    db.session.query(OrdersHistory).filter(OrdersHistory.id==id).delete()
+    o_del = db.session.query(OrdersHistory).filter_by(id=id).first()
+    db.session.delete(o_del)
     db.session.commit()
+    
     order_history = OrdersHistory.query.order_by(OrdersHistory.id.desc()).all()
     return render_template("/order/orders.jinja", title="Order History", title_2="Order Deleted!", order_histories = order_history)
+
+

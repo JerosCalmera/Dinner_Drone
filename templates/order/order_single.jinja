@@ -6,34 +6,35 @@
 <a class="button-small" href="/order_add_form">Add a new order</a>
 
 <p class="order">
-<b>Customer Name:</b> {{ order.customer.name }}<br>
-<b>Customer Phone Number:</b> {{ order.customer.phone}}<br>          
-<b>Customer Address:</b> {{ order.customer.address}}<br>
-<b>Order Id:</b> {{ order.id}}<br>
-<b>Order Date:</b> {{ order.order_date}}<br>
+<b>Customer Name:</b> {{ order_histories.customer.name }}<br>
+<b>Customer Phone Number:</b> {{ order_histories.customer.phone }}<br>          
+<b>Customer Address:</b> {{ order_histories.customer.address }}<br>
+<b>Order Id:</b> {{ order_histories.id }}<br>
+<b>Order Date:</b> {{ order_histories.order_date}}<br>
+<b>Order Notes:</b><br>{{ order_histories.order_notes }}<br>
 </p>
+
 
 <p class="order">
 <ol><b>Items ordered:</b><br>
-{% for order_item in order.order_items %}
+{% for order_item in order_histories.order_items %}
 <b>{{ order_item.menu.item_name }}</b> £{{ order_item.menu.item_price }}, ({{ order_item.menu.item_weight }}g) <br>
 {% endfor %}
 </ol>
 </p>
-
+<div class="order_totals">
 <p class="order">
-<b>Order total:</b> £{{ order.calculate_total() }}<br>
-<b>Delivery fee:</b> £{{ order.delivery_fee() }}<br>
-<b>Grand total:</b> £{{ order.calculate_g_total() }}<br>
-<b>Order total weight:</b> {{ order.calculate_weight() }}g
+<b>Order total:</b> £{{ order_histories.calculate_total() }}<br>
+<b>Delivery fee:</b> £{{ order_histories.delivery_fee() }}<br>
+<b>Grand total:</b> £{{ order_histories.calculate_g_total() }}<br>
+<b>Order total weight:</b> {{ order_histories.calculate_weight() }}g
 </p>
-
+</div>
 <p class="order">
-<b>Edit Order:<a class="button-small" href="/order_edit_entry/{{ order.id }}">Edit</a></b>
+<b>Edit Order:<a class="button-small" href="/order_edit_entry/{{ order_histories.id }}">Edit</a></b>
 <br>
-<b>Delete Order:<a class="button-small-delete" href="/order_delete_entry/{{ order.id }}/delete">Delete</a></b>
+<b>Delete Order:<a class="button-small-delete" href="/order_delete_entry/{{ order_histories.id }}/delete">Delete</a></b>
 </p>
-
 
 </div>
 {% endblock %}

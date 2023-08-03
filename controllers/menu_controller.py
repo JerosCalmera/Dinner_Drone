@@ -55,6 +55,6 @@ def menu_delete(id):
     db.session.query(OrderItems).filter(OrderItems.menu_items_id==id).delete()
     db.session.query(Menu).filter(Menu.id==id).delete()
     db.session.commit()
-
+    
     menu = Menu.query.order_by(Menu.id.desc()).all()
     return render_template("/menu/menu.jinja", title="Menu Items", title_2="Item Removed!", menu = menu)

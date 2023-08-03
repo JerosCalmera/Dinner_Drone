@@ -4,27 +4,24 @@
 <div class="button-outer">
 
 <form action="/order_add" method="post">
-    <label for="customer_id">Customer</label>
+    <label for="customer_id"><b>Customer:</b></label>
     <select name="customer_id" id="customer_id"> 
     {% for customer in customers %}
         <option value="{{ customer.id }}">{{ customer.name }}</option>
     {% endfor %}
-    </select>
-    <br>
-    <br>
-    <label for="order_date">Order Date:</label>
-    <input type="date" id="order_date" required name="order_date"> 
-    <br>
-    <br>
-    </b>Menu Item to add:</b>
+    </select><br>
+    <label for="order_date"><b>Order Date:</b></label>
+    <input type="date" id="order_date" required name="order_date"><br>
+
+    <label for="order_notes"><b>Order notes:</b></label><br>
+    <textarea id="order_notes" name="order_notes" rows="4" cols="50">Not delivered</textarea><br>
+    <b>Menu Item to add:</b>
     {% for item in items %}
     <br>
     <input type="checkbox", id="item_{{ item.id }}", name="item_{{ item.id }}", value="item_{{ item.id }}">
     </b><label for="item_{{ item.id }}"><b>{{ item.item_type }}</b> {{ item.item_name }} £{{ item.item_price }}</label>
     {% endfor %}
 
-    <br>
-    <br>
     <button class="button-small" type="submit">Add To Order</button>
     </form>
 </div>

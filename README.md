@@ -35,5 +35,4 @@ flask upgrade
 flask seed
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-![image](https://github.com/JerosCalmera/Dinner_Drone/assets/136751073/8b5e256a-5be9-4654-ae4c-6d8d0592c861)
-
+![screenshot](https://github.com/JerosCalmera/Dinner_Drone/assets/136751073/81b485e1-3a9f-492b-8704-17cce837b3d0)

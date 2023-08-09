@@ -1,8 +1,6 @@
-The following was the (to be the first of three) major solo project undertaken at CodeClan at week 5 (before the company went into liquidation), I created the website using SQL, Python, Jinja2, and CSS.
+The following was the (to be the first of three) major solo project undertaken at CodeClan at week 5 (before the company went into liquidation), I created the website using SQL, SQLAlchemy, Python, Flask, Jinja2, and CSS.
 
 # Dinner_Drone
-
-CodeClan week 5 Python project, uses Flask and SQLAlchemy.
 
 The brief for the project was:
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

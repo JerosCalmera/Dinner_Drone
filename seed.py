@@ -7,9 +7,9 @@ from flask.cli import with_appcontext
 @click.command(name='seed')
 @with_appcontext
 def seed():
-    Customer.query.delete()
-    OrderHistory.query.delete()
     OrderItem.query.delete()
+    OrderHistory.query.delete()
+    Customer.query.delete()
     Menu.query.delete()
     customer1 = Customer(name = "Jenny Wholesome", phone = "01231453678", address = "42 Arcadia Rd, Tadford")
     customer2 = Customer(name = "Elle Abbot", phone = "01206645789", address = "19 Belle Vue Rd, Colchester")
